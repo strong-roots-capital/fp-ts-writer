@@ -1,6 +1,6 @@
 {
   "name": "@strong-roots-capital/fp-ts-writer",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Writer monad stack for fp-ts v2",
   "keywords": [
     "fp-ts",
