@@ -1,0 +1,81 @@
+{
+  "name": "@strong-roots-capital/fp-ts-writer",
+  "version": "0.0.0-semantically-released",
+  "description": "Writer monad stack for fp-ts v2",
+  "keywords": [
+    "fp-ts",
+    "writer",
+    "monad"
+  ],
+  "homepage": "https://github.com/ericcrosson/fp-ts-writer",
+  "bugs": {
+    "url": "https://github.com/ericcrosson/fp-ts-writer/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericcrosson/fp-ts-writer.git"
+  },
+  "license": "ISC",
+  "author": "Eric Crosson <eric.s.crosson@utexas.edu> (https://github.com/eric.s.crosson@utexas.edu)",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist/src/"
+  ],
+  "scripts": {
+    "ava": "ava -v",
+    "build": "tsc",
+    "clean": "rimraf --no-glob dist",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "eslint --ext ts . package.json",
+    "lint-staged": "lint-staged",
+    "lint:fix": "eslint --ext ts --fix . package.json",
+    "prepublishOnly": "npm run build",
+    "prettier": "prettier --list-different .",
+    "prettier:fix": "prettier --write .",
+    "test": "nyc ava"
+  },
+  "pre-commit": "lint-staged",
+  "devDependencies": {
+    "@ericcrosson/eslint-config": "^2.1.3",
+    "@ericcrosson/prettier-config": "^1.0.0",
+    "@types/node": "^16.11.6",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "ava": "^3.14.0",
+    "codecov": "^3.8.1",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^6.6.0",
+    "eslint-plugin-ava": "^10.2.0",
+    "eslint-plugin-fp-ts": "^0.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-security": "^1.4.0",
+    "lint-staged": "^10.5.3",
+    "nyc": "^15.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "2.2.1",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  },
+  "peerDependencies": {
+    "fp-ts": "^2.10.0"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "!dist/**/*.d.ts",
+      "test/**/test-*.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
