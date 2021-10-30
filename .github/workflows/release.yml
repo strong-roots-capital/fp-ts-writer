@@ -20,7 +20,9 @@ jobs:
         with:
           node-version: 'lts/*'
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install --global npm
+          npm ci
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
