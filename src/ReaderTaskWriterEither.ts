@@ -52,6 +52,7 @@ export const traverseArray = <R, E, A, B>(
   return async () =>
     Promise.all(out.map(async (invokeTask) => invokeTask())).then((bs) => {
       // FIXME: TEST: this in the case of empty `as`
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const log = bs[0]![0]
       const eithers = bs.map(([_, e]) => e)
       const either = E.sequenceArray(eithers)
