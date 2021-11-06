@@ -20,6 +20,16 @@ export const chain: <R, E, A, B>(
   f: (a: A) => ReaderTaskWriterEither<R, E, B>,
 ) => (fa: ReaderTaskWriterEither<R, E, A>) => ReaderTaskWriterEither<R, E, B> = chainW
 
+export const map: <A, B>(
+  f: (a: A) => B,
+) => <R, E>(fa: ReaderTaskWriterEither<R, E, A>) => ReaderTaskWriterEither<R, E, B> = (
+  f,
+) => (fa) => (r) =>
+  pipe(
+    fa(r),
+    TWE.map((a) => f(a)),
+  )
+
 export const orElseW: <R, E1, E2, B>(
   onLeft: (e: E1) => ReaderTaskWriterEither<R, E2, B>,
 ) => <A>(
