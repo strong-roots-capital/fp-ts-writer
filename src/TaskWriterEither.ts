@@ -38,7 +38,8 @@ export const tell: <E, A>(
 ) => (fa: TaskWriterEither<E, A>) => TaskWriterEither<E, A> = (m) => (fa) => async () =>
   Promise.resolve()
     .then(fa)
-    .then(([ma, a]) => [[...ma, m], a])
+    .then(([ma, a]) => (E.isRight(a) ? [[...ma, m], a] : [ma, a]))
+
 
 export const chainW: <E1, A, E2, B>(
   f: (a: A) => TaskWriterEither<E2, B>,
