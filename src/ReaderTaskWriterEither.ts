@@ -69,3 +69,21 @@ export const traverseArray = <R, E, A, B>(
       return [log, either]
     })
 }
+
+export const tell: <R, E, A>(
+  m: string,
+) => (fa: ReaderTaskWriterEither<R, E, A>) => ReaderTaskWriterEither<R, E, A> = (m) => (
+  fa,
+) => (r) => async () =>
+  Promise.resolve()
+    .then(fa(r))
+    .then(([ma, a]) => (E.isRight(a) ? [[...ma, m], a] : [ma, a]))
+
+export const tellI: <R, E, A>(
+  fm: (a: A) => string,
+) => (fa: ReaderTaskWriterEither<R, E, A>) => ReaderTaskWriterEither<R, E, A> = (
+  fm,
+) => (fa) => (r) => async () =>
+  Promise.resolve()
+    .then(fa(r))
+    .then(([ma, a]) => (E.isRight(a) ? [[...ma, fm(a.right)], a] : [ma, a]))
