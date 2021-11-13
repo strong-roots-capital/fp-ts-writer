@@ -77,7 +77,7 @@ export const tell: <R, E, A>(
 ) => (r) => async () =>
   Promise.resolve()
     .then(fa(r))
-    .then(([ma, a]) => (E.isRight(a) ? [[...ma, m], a] : [ma, a]))
+    .then(([ma, a]) => (E.isRight(a) ? [((ma as string[]).push(m), ma), a] : [ma, a]))
 
 export const tellI: <R, E, A>(
   fm: (a: A) => string,
@@ -86,4 +86,6 @@ export const tellI: <R, E, A>(
 ) => (fa) => (r) => async () =>
   Promise.resolve()
     .then(fa(r))
-    .then(([ma, a]) => (E.isRight(a) ? [[...ma, fm(a.right)], a] : [ma, a]))
+    .then(([ma, a]) =>
+      E.isRight(a) ? [((ma as string[]).push(fm(a.right)), ma), a] : [ma, a],
+    )

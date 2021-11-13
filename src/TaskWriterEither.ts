@@ -38,7 +38,7 @@ export const tell: <E, A>(
 ) => (fa: TaskWriterEither<E, A>) => TaskWriterEither<E, A> = (m) => (fa) => async () =>
   Promise.resolve()
     .then(fa)
-    .then(([ma, a]) => (E.isRight(a) ? [[...ma, m], a] : [ma, a]))
+    .then(([ma, a]) => (E.isRight(a) ? [((ma as string[]).push(m), ma), a] : [ma, a]))
 
 export const tellI: <E, A>(
   fm: (a: A) => string,
@@ -47,7 +47,7 @@ export const tellI: <E, A>(
 ) => async () =>
   Promise.resolve()
     .then(fa)
-    .then(([ma, a]) => (E.isRight(a) ? [[...ma, fm(a.right)], a] : [ma, a]))
+    .then(([ma, a]) => (E.isRight(a) ? [((ma as string[]).push(fm(a.right)), ma), a] : [ma, a]))
 
 export const chainW: <E1, A, E2, B>(
   f: (a: A) => TaskWriterEither<E2, B>,
@@ -57,7 +57,7 @@ export const chainW: <E1, A, E2, B>(
   Promise.resolve()
     .then(fa)
     .then(async ([ma, a]) =>
-      E.isRight(a) ? f(a.right)().then(([mb, b]) => [[...ma, ...mb], b]) : [ma, a],
+      E.isRight(a) ? f(a.right)().then(([mb, b]) => [[...ma, ...mb] , b]) : [ma, a],
     )
 
 export const chain: <E, A, B>(
