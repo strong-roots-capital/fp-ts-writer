@@ -11,7 +11,10 @@ test('should create a TWE from a try-catch that resolves', async (t) => {
       (error) => `Failed with error ${error}`,
     ),
     TWE.fold(
-      () => T.fromIO(() => t.fail('Expected promise to resolve')),
+      () =>
+        T.fromIO(() => {
+          t.fail('Expected promise to resolve')
+        }),
       (log, resolved) =>
         T.fromIO(() => {
           t.deepEqual(log, ['attempting a risky stunt'])
@@ -35,7 +38,10 @@ test('should create a TWE from a try-catch that rejects', async (t) => {
           t.deepEqual(log, ['attempting a risky stunt'])
           t.is(resolved, 'Failed with error rejected')
         }),
-      () => T.fromIO(() => t.fail('Expected promise to reject')),
+      () =>
+        T.fromIO(() => {
+          t.fail('Expected promise to reject')
+        }),
     ),
     async (invokeTask) => invokeTask(),
   )
@@ -76,7 +82,10 @@ test('should concatenate the log from several TWEs', async (t) => {
           ])
           t.is(resolved, 'Failed with error rejected')
         }),
-      () => T.fromIO(() => t.fail('Expected promise to reject')),
+      () =>
+        T.fromIO(() => {
+          t.fail('Expected promise to reject')
+        }),
     ),
     async (invokeTask) => invokeTask(),
   )
