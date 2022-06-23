@@ -25,17 +25,14 @@
   "scripts": {
     "ava": "ava -v",
     "build": "tsc",
-    "clean": "rimraf --no-glob dist",
+    "clean": "rm -rf -- dist",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "format": "prettier --list-different --ignore-unknown .",
+    "format:fix": "prettier --write --ignore-unknown .",
     "lint": "eslint --ext ts . package.json",
-    "lint-staged": "lint-staged",
     "lint:fix": "eslint --ext ts --fix . package.json",
-    "prepublishOnly": "npm run build",
-    "prettier": "prettier --list-different .",
-    "prettier:fix": "prettier --write .",
     "test": "nyc ava"
   },
-  "pre-commit": "lint-staged",
   "devDependencies": {
     "@ericcrosson/eslint-config": "^2.1.3",
     "@ericcrosson/prettier-config": "^1.0.0",
@@ -53,11 +50,8 @@
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-security": "^1.4.0",
-    "lint-staged": "^10.5.3",
     "nyc": "^15.1.0",
-    "pre-commit": "^1.2.2",
     "prettier": "2.2.1",
-    "rimraf": "^3.0.2",
     "semantic-release": "^18.0.0",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.4"
