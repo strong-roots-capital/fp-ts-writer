@@ -1,3 +1,4 @@
 .nyc_output/
 dist/
 package-lock.json
+.pre-commit-config.yaml
