@@ -7,35 +7,12 @@ on:
     branches: [master, alpha, beta]
 
 jobs:
-  # Note: prettier and eslint are in contention so we run eslint but not prettier
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v18
-
-      - name: Nix develop
-        run: nix develop
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Compile TypeScript
-        run: npm run build
-
-      - name: Lint TypeScript
-        run: npm run lint
-
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, lts/*]
+        node-version: [lts/-2, lts/-1, lts/*]
 
     steps:
       - uses: actions/checkout@v3
