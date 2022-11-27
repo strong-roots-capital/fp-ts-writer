@@ -1,9 +1,14 @@
 {
-  description = "Writer monad stack";
+  description = "fp-ts writer monad stack";
 
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    pre-commit-hooks.url = "github:ericcrosson/pre-commit-hooks.nix/add-eslint";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -22,19 +27,7 @@
             hooks = {
               alejandra.enable = true;
               nix-linter.enable = true;
-              prettier = {
-                enable = true;
-                excludes = ["package-lock.json"];
-              };
-              eslint = {
-                enable = true;
-                excludes = ["package-lock.json" ".github/renovate.json" "tsconfig.json"];
-              };
-            };
-            settings = {
-              eslint = {
-                extensions = "\\.(js|jsx|ts|tsx|json)$";
-              };
+              prettier.enable = true;
             };
           };
         };
