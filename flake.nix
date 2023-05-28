@@ -27,7 +27,6 @@
             hooks = {
               actionlint.enable = true;
               alejandra.enable = true;
-              nix-linter.enable = true;
               prettier.enable = true;
             };
           };

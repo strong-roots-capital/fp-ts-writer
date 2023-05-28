@@ -23,31 +23,17 @@
     "dist/src/"
   ],
   "scripts": {
-    "ava": "ava -v",
     "build": "tsc",
     "clean": "rm -rf -- dist",
-    "test": "nyc ava"
+    "test": "c8 --all node --loader tsx --test test/**/*.ts"
   },
   "devDependencies": {
-    "ava": "5.1.0",
-    "nyc": "15.1.0",
-    "ts-node": "10.9.1",
+    "c8": "7.13.0",
+    "tsx": "3.12.7",
     "typescript": "4.9.4"
   },
   "peerDependencies": {
     "fp-ts": "^2.10.0"
-  },
-  "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "files": [
-      "!dist/**/*.d.ts",
-      "test/**/test-*.ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
   },
   "publishConfig": {
     "access": "public"
