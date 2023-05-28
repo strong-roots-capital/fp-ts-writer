@@ -12,12 +12,6 @@
 npm install @strong-roots-capital/fp-ts-writer
 ```
 
-## Use
-
-```typescript
-// TODO: describe usage
-```
-
 ## Acknowledgments
 
 - [fp-ts](https://github.com/gcanti/fp-ts)
