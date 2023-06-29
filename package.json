@@ -31,7 +31,7 @@
     "@types/node": "20.3.2",
     "c8": "8.0.0",
     "tsx": "3.12.7",
-    "typescript": "5.1.5"
+    "typescript": "5.1.6"
   },
   "peerDependencies": {
     "fp-ts": "^2.10.0"
