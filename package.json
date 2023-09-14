@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/node": "20.6.0",
     "c8": "8.0.1",
-    "tsx": "3.12.9",
+    "tsx": "3.12.10",
     "typescript": "5.2.2"
   },
   "peerDependencies": {
