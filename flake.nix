@@ -34,7 +34,7 @@
 
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
-            nodejs
+            nodejs_20
           ];
           shellHook = ''
             export PATH="$PWD/node_modules/.bin:$PATH"
