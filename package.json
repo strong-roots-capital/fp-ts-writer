@@ -28,7 +28,7 @@
     "test": "c8 --all node --import tsx --test test/**/*.ts"
   },
   "devDependencies": {
-    "@types/node": "20.9.0",
+    "@types/node": "20.9.1",
     "c8": "8.0.1",
     "tsx": "4.1.2",
     "typescript": "5.2.2"
